@@ -1,0 +1,28 @@
+public class Conexion {
+    public Connection connectToDB(){
+        Connection connection = null;
+        String host = "ec2-52-71-85-210.compute-1.amazonaws.com";
+        String basedatos = "d6v1n1r1vhneue";
+        String user = "ynqjulxpsmkugq";
+        String password = "dc10f1965e73930a1b3da9e65d79f95575cee984ed368fa08664ec0a867391a3";
+        
+        try {
+            Class.forName("org.postgresql.Driver");
+            //connection = DriverManager.getConnection("jdbc:postgresql://"+host+":5432/"+basedatos,user,password);
+            connection = DriverManager.getConnection("jdbc:postgresql://"+host+"/"+basedatos+"?user="+user+"&password="+password+"&ssl=false");
+            //String url = "jdbc:postgresql://localhost/test?user=fred&password=secret&ssl=true";
+            if (connection != null) {
+                JOptionPane.showMessageDialog(null,"CONEXION EXITOSA" );
+                     
+               
+            }
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null,"Error al conectar a la base :( .");
+			e.printStackTrace();
+            
+            
+        }finally{
+            return connection;
+        }
+    }
+}
